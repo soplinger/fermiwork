@@ -1,0 +1,15 @@
+# Fermi estimate: how many piano tuners work in Chicago?
+title Piano tuners in Chicago
+estimate tuners
+
+population = 2.7e6 in [2.5e6, 2.9e6]        # residents
+people_per_home = 2.4 in [2.0, 2.8]         # people per household
+homes = population / people_per_home        # households
+piano_share = 0.05 in [0.02, 0.10] log      # share of homes with a piano
+tunings_per_piano = 1 in [0.5, 1.5]         # tunings per piano per year
+hours_per_tuning = 2 in [1.5, 3]            # hours per visit, travel included
+work_hours = 1800 in [1400, 2000]           # paid hours a tuner works per year
+
+tuners = ceil(homes * piano_share * tunings_per_piano * hours_per_tuning / work_hours)
+
+expect tuners in [5, 500]
